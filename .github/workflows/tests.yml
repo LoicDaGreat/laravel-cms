@@ -3,14 +3,12 @@ name: tests
 on:
   push:
     branches:
-      - development
       - main
       - master
       - workos
       - Production
   pull_request:
     branches:
-      - development
       - main
       - master
       - workos
@@ -21,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-version: ['8.3', '8.4', '8.5']
+        php-version: ['8.4', '8.5']
 
     steps:
       - name: Checkout code
