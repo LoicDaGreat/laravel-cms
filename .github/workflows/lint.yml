@@ -3,16 +3,18 @@ name: linter
 on:
   push:
     branches:
-      - develop
+      - development
       - main
       - master
       - workos
+      - Production
   pull_request:
     branches:
       - develop
       - main
       - master
       - workos
+      - Production
 
 permissions:
   contents: write
