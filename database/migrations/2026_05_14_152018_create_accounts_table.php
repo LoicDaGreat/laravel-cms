@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name', 100);
             $table->enum('type', ['checking', 'savings', 'credit', 'cash']);
             $table->decimal('balance', 15, 2)->default(0);
-            $table->string('currency', 3)->default('USD');
+            $table->unsignedBigInteger('currency_id')->default(1);
             $table->timestamps();
         });
     }

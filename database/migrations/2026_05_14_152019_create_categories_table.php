@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->string('name', 80);
-            $table->enum('type', ['income', 'expense']);
+            $table->string('type');
             $table->string('icon', 50)->nullable();
             $table->string('color', 7)->nullable(); // hex e.g. #FF5733
             $table->boolean('is_default')->default(false);

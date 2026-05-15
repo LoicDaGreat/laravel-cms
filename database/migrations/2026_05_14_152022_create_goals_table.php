@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Status;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,7 +19,7 @@ return new class extends Migration
             $table->decimal('target_amount', 12, 2);
             $table->decimal('saved_amount', 12, 2)->default(0);
             $table->date('deadline')->nullable();
-            $table->enum('status', ['active', 'completed', 'paused'])->default('active');
+            $table->integer('status')->default(Status::ACTIVE->value);
             $table->timestamps();
         });
     }
