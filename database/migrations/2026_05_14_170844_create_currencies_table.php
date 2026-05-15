@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('accounts', function (Blueprint $table) {
+        Schema::create('currencies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('code', 3)->unique(); // e.g ZAR, USD
             $table->string('name', 100);
-            $table->string('type'); // backed by AccountType enum
-            $table->decimal('balance', 15, 2)->default(0);
-            $table->foreignId('currency_id')->default(1)->constrained()->restrictOnDelete();
+            $table->string('symbol', 5); // e.g $, R, €
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('accounts');
+        Schema::dropIfExists('currencies');
     }
 };
