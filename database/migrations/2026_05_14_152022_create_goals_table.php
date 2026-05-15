@@ -19,7 +19,7 @@ return new class extends Migration
             $table->decimal('target_amount', 12, 2);
             $table->decimal('saved_amount', 12, 2)->default(0);
             $table->date('deadline')->nullable();
-            $table->integer('status')->default(Status::ACTIVE->value);
+            $table->integer('status')->default(Status::ACTIVE->value); // backed by Status enum (int)
             $table->timestamps();
         });
     }

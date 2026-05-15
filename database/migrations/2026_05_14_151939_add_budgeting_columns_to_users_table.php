@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->decimal('monthly_income', 12, 2)->nullable()->after('email_verified_at');
-            $table->unsignedBigInteger('currency_id')->default(1)->after('monthly_income');
+            $table->foreignId('currency_id')->default(1)->after('monthly_income')->constrained()->restrictOnDelete();
         });
     }
 
@@ -23,6 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign(['currency_id']);
             $table->dropColumn(['monthly_income', 'currency_id']);
         });
     }

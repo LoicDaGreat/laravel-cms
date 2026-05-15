@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('name', 100);
-            $table->enum('type', ['checking', 'savings', 'credit', 'cash']);
+            $table->string('type'); // backed by AccountType enum
             $table->decimal('balance', 15, 2)->default(0);
-            $table->unsignedBigInteger('currency_id')->default(1);
+            $table->foreignId('currency_id')->default(1)->constrained()->restrictOnDelete();
             $table->timestamps();
         });
     }

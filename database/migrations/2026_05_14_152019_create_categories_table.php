@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\CategoryType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->string('name', 80);
-            $table->string('type');
+            $table->string('type')->default(CategoryType::EXPENSE->value); // backed by CategoryType enum
             $table->string('icon', 50)->nullable();
             $table->string('color', 7)->nullable(); // hex e.g. #FF5733
             $table->boolean('is_default')->default(false);
